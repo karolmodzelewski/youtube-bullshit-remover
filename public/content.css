@@ -1,0 +1,51 @@
+html[data-ybr-shorts='off'] {
+    /* Shelves: home, subscriptions, search results, watch-next sidebar. The
+       section wrapper goes too, so no empty gap is left where the shelf was. */
+    ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+    ytd-rich-shelf-renderer[is-shorts],
+    ytd-reel-shelf-renderer,
+    ytm-reel-shelf-renderer,
+    grid-shelf-view-model:has(ytm-shorts-lockup-view-model, ytm-shorts-lockup-view-model-v2),
+
+    /* Individual Shorts entries wherever they appear inline in a feed. */
+    ytd-rich-item-renderer:has(ytm-shorts-lockup-view-model, ytm-shorts-lockup-view-model-v2),
+    ytd-rich-item-renderer:has(a[href^='/shorts/']),
+    ytd-video-renderer:has(ytd-thumbnail-overlay-time-status-renderer[overlay-style='SHORTS']),
+    ytd-video-renderer:has(a[href^='/shorts/']),
+    ytd-grid-video-renderer:has(a[href^='/shorts/']),
+    ytd-compact-video-renderer:has(a[href^='/shorts/']),
+    ytd-playlist-video-renderer:has(a[href^='/shorts/']),
+
+    /* Left sidebar entry, both expanded and the collapsed mini rail. The link has
+       no /shorts href; "Shorts" is a brand name, left untranslated. */
+    ytd-guide-entry-renderer:has(a[title='Shorts']),
+    ytd-mini-guide-entry-renderer[aria-label='Shorts'],
+    ytd-mini-guide-entry-renderer:has(a[title='Shorts']),
+
+    /* "Shorts" tab on a channel page. */
+    yt-tab-shape[tab-title='Shorts'],
+    ytd-tab-renderer:has(> a[href$='/shorts']),
+
+    /* "Shorts" filter chip on search results. It has nothing to match but its
+       label, so the content script tags it (tagShortsChips in src/content). */
+    yt-chip-cloud-chip-renderer[data-ybr-shorts-chip] {
+        display: none !important;
+    }
+}
+
+html[data-ybr-playables='off'] {
+    /* Game shelves on home and in search, and any loose game card. */
+    ytd-rich-section-renderer:has(mini-game-card-view-model, a[href^='/playables']),
+    ytd-rich-item-renderer:has(mini-game-card-view-model),
+    ytd-shelf-renderer:has(a[href^='/playables']),
+    mini-game-card-view-model,
+
+    /* Left sidebar entry under Explore. */
+    ytd-guide-entry-renderer:has(a[href^='/playables']) {
+        display: none !important;
+    }
+}
+
+html[data-ybr-most-relevant='off'] ytd-browse[page-subtype='subscriptions'] ytd-rich-section-renderer:has(ytd-rich-shelf-renderer:not([is-shorts])) {
+    display: none !important;
+}

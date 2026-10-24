@@ -1,0 +1,145 @@
+:root {
+    --text: #6b6375;
+    --text-h: #08060d;
+    --bg: #fff;
+    --border: #e5e4e7;
+    --accent: #cc181e;
+    --track: #e5e4e7;
+    --hover: rgba(204, 24, 30, 0.06);
+
+    font:
+        14px/145% system-ui,
+        'Segoe UI',
+        Roboto,
+        sans-serif;
+    color-scheme: light dark;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #9ca3af;
+        --text-h: #f3f4f6;
+        --bg: #16171d;
+        --border: #2e303a;
+        --accent: #e5484d;
+        --track: #3a3d49;
+        --hover: rgba(229, 72, 77, 0.1);
+    }
+}
+
+body {
+    margin: 0;
+}
+
+main {
+    width: 320px;
+    box-sizing: border-box;
+}
+
+header {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+h1 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    color: var(--text-h);
+}
+
+header p {
+    margin: 2px 0 0;
+    font-size: 12px;
+}
+
+ul {
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    /* Reserves the height of the full list so the popup doesn't resize on load. */
+    min-height: 197px;
+}
+
+label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+label:hover {
+    background: var(--hover);
+}
+
+input {
+    /* Visually replaced by .switch, but kept in the layout so it stays focusable
+     and reachable by keyboard and screen readers. */
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch {
+    flex: none;
+    position: relative;
+    width: 32px;
+    height: 18px;
+    margin-top: 2px;
+    border-radius: 9px;
+    background: var(--track);
+    transition: background 120ms ease;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #fff;
+        transition: transform 120ms ease;
+    }
+}
+
+input:checked + .switch {
+    background: var(--accent);
+}
+
+input:checked + .switch::after {
+    transform: translateX(14px);
+}
+
+input:focus-visible + .switch {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    color: var(--text-h);
+}
+
+.hint {
+    font-size: 12px;
+    line-height: 132%;
+    margin-top: 1px;
+}
+
+footer {
+    padding: 10px 16px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+}
