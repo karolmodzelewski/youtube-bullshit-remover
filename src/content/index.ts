@@ -25,7 +25,7 @@ onSettingsChanged(applyCss);
 
 /**
  * The "Shorts" filter chip on search results has no attribute, link or position
- * CSS could rely on — only its label, which YouTube leaves untranslated. Tag it
+ * CSS could rely on - only its label, which YouTube leaves untranslated. Tag it
  * so content.css can hide it; the tag does nothing while the setting is off, so
  * this runs regardless. YouTube recycles chip elements between searches, so
  * every chip is re-checked rather than tagged once.

@@ -1,4 +1,4 @@
-// Watch-builds the extension into dist/ — the loop to use while the unpacked
+// Watch-builds the extension into dist/ - the loop to use while the unpacked
 // extension is loaded in the browser.
 //
 // Both Vite passes run from this one process, which avoids needing `concurrently`

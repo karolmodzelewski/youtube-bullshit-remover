@@ -78,7 +78,7 @@ export async function saveSettings(settings: Settings): Promise<void> {
 }
 
 /**
- * Fires whenever settings change in any context — this is the entire
+ * Fires whenever settings change in any context - this is the entire
  * popup-to-content-script channel, so neither side needs message passing.
  * Returns an unsubscribe function.
  */

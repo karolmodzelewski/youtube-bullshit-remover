@@ -5,8 +5,7 @@ popup for the toggles, CSS for the hiding.
 
 Three settings, defined once in [src/shared/settings.ts](src/shared/settings.ts),
 all on by default: hide Shorts, hide Playables (YouTube's mini-games), and hide
-the "Most relevant" shelf on the Subscriptions page (PL: "Najtrafniejsze").
-Comments and the recommendations next to a video are deliberately left alone.
+the "Most relevant" shelf on the Subscriptions page.
 
 ## How it works
 
@@ -21,7 +20,7 @@ results, which CSS can't identify by anything but its label. It's under 2 kB
 built.
 
 The popup writes to `chrome.storage.sync` and the content script listens on
-`chrome.storage.onChanged` — that is the entire channel between them, so there
+`chrome.storage.onChanged` - that is the entire channel between them, so there
 is no message passing and no background service worker.
 
 | Path                                               | Role                                     |
@@ -51,7 +50,7 @@ returning to this page. Files are never copied into the browser.
 ## Development
 
 ```sh
-npm run dev:ext   # watch-build dist/ — the loop to use with the extension loaded
+npm run dev:ext   # watch-build dist/ - the loop to use with the extension loaded
 npm run dev       # popup UI only, at localhost:5173/popup.html, with HMR
 npm test          # unit tests (Vitest + jsdom); npm run test:watch to keep it running
 npm run lint
@@ -62,7 +61,7 @@ With `dev:ext` running, what each change needs:
 
 | Changed         | Needed                                               |
 | --------------- | ---------------------------------------------------- |
-| Popup React/CSS | **Nothing** — close and reopen the popup             |
+| Popup React/CSS | **Nothing** - close and reopen the popup             |
 | `content.css`   | ↻ on the extension card, then reload the YouTube tab |
 | Content script  | ↻ on the extension card, then reload the YouTube tab |
 | `manifest.json` | ↻ on the extension card (always), then reload        |
@@ -79,11 +78,11 @@ ordinary tab, with `localStorage` standing in for `chrome.storage` (see
 
 The three contexts have separate consoles:
 
-- **Popup** — right-click the toolbar icon → _Inspect popup_
-- **Content script** — the YouTube page's own DevTools console; in Sources it's
+- **Popup** - right-click the toolbar icon → _Inspect popup_
+- **Content script** - the YouTube page's own DevTools console; in Sources it's
   under the _Content scripts_ tab
-- **Stored settings** — from the popup's console: `chrome.storage.sync.get(console.log)`
-- **Manifest errors** — the red _Errors_ button on the extension card names the field
+- **Stored settings** - from the popup's console: `chrome.storage.sync.get(console.log)`
+- **Manifest errors** - the red _Errors_ button on the extension card names the field
 
 When something isn't being hidden, check `document.documentElement.dataset` in
 the page console:
@@ -94,16 +93,16 @@ the page console:
   its current custom-element name, and fix that one file
 
 YouTube renames its custom elements without notice, so selector rot is the
-expected failure mode — that's why it's confined to a single file.
+expected failure mode - that's why it's confined to a single file.
 
 ## Build layout
 
 Two Vite passes write into a shared `dist/`:
 
-- **Popup** ([vite.config.ts](vite.config.ts)) — a normal HTML entry. Output
+- **Popup** ([vite.config.ts](vite.config.ts)) - a normal HTML entry. Output
   names are unhashed: an extension loads from disk, so there's no HTTP cache to
   bust, and stable names let watch rebuilds overwrite in place.
-- **Content script** ([vite.content.config.ts](vite.content.config.ts)) — library
+- **Content script** ([vite.content.config.ts](vite.content.config.ts)) - library
   mode, `iife` format. MV3 content scripts are classic scripts; there is no
   `"type": "module"` for them, and hashed, code-split ESM can't be named in a
   manifest.
