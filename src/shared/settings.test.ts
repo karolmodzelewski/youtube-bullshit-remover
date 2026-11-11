@@ -46,7 +46,14 @@ describe('inside the extension', () => {
         const settings = await loadSettings();
 
         // Assert
-        expect(settings).toEqual({ hideShorts: false, hidePlayables: true, hideMostRelevant: true });
+        expect(settings).toEqual({
+            hideShorts: false,
+            hidePlayables: true,
+            hideMostRelevant: true,
+            hideSurveys: true,
+            hideAds: true,
+            hideMoreFromYouTube: true,
+        });
     });
 
     it('saves everything under a single key in sync storage', async () => {
@@ -75,7 +82,14 @@ describe('inside the extension', () => {
         fake.emit({ settings: { newValue: { hideMostRelevant: false } } });
 
         // Assert
-        expect(callback).toHaveBeenCalledExactlyOnceWith({ hideShorts: true, hidePlayables: true, hideMostRelevant: false });
+        expect(callback).toHaveBeenCalledExactlyOnceWith({
+            hideShorts: true,
+            hidePlayables: true,
+            hideMostRelevant: false,
+            hideSurveys: true,
+            hideAds: true,
+            hideMoreFromYouTube: true,
+        });
     });
 
     it('falls back to the defaults when the stored value is removed', async () => {

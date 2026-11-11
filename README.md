@@ -3,9 +3,11 @@
 A Chrome/Brave (MV3) extension that hides YouTube Shorts and other noise. React
 popup for the toggles, CSS for the hiding.
 
-Three settings, defined once in [src/shared/settings.ts](src/shared/settings.ts),
-all on by default: hide Shorts, hide Playables (YouTube's mini-games), and hide
-the "Most relevant" shelf on the Subscriptions page.
+Six settings, defined once in [src/shared/settings.ts](src/shared/settings.ts),
+all on by default: hide Shorts, hide Playables (YouTube's mini-games), hide the
+"Most relevant" shelf on the Subscriptions page, hide surveys ("How do you rate
+this recommendation?"), hide feed ads, and hide the "More from YouTube" sidebar
+section.
 
 ## How it works
 

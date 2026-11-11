@@ -4,6 +4,9 @@ const CSS_ATTRIBUTES: Record<keyof Settings, string> = {
     hideShorts: 'data-ybr-shorts',
     hidePlayables: 'data-ybr-playables',
     hideMostRelevant: 'data-ybr-most-relevant',
+    hideSurveys: 'data-ybr-surveys',
+    hideAds: 'data-ybr-ads',
+    hideMoreFromYouTube: 'data-ybr-more-from-youtube',
 };
 
 function applyCss(settings: Settings): void {

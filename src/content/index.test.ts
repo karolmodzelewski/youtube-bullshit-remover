@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { createFakeChrome } from '../test/fakeChrome';
 
-const ATTRIBUTES = ['data-ybr-shorts', 'data-ybr-playables', 'data-ybr-most-relevant'];
+const ATTRIBUTES = ['data-ybr-shorts', 'data-ybr-playables', 'data-ybr-most-relevant', 'data-ybr-surveys', 'data-ybr-ads', 'data-ybr-more-from-youtube'];
 
 const root = document.documentElement;
 const flushPromises = () => new Promise((resolve) => setTimeout(resolve, 0));

@@ -49,3 +49,36 @@ html[data-ybr-playables='off'] {
 html[data-ybr-most-relevant='off'] ytd-browse[page-subtype='subscriptions'] ytd-rich-section-renderer:has(ytd-rich-shelf-renderer:not([is-shorts])) {
     display: none !important;
 }
+
+html[data-ybr-surveys='off'] {
+    /* "How do you rate this recommendation?" under feed videos */
+    .ytLockupAttachmentsViewModelAttachment:has(> yt-slimline-survey-view-model),
+    yt-slimline-survey-view-model,
+
+    /* Older Polymer survey variants, including feed sections built around one. */
+    ytd-rich-section-renderer:has(ytd-inline-survey-renderer),
+    ytd-inline-survey-renderer,
+    ytd-rating-survey-renderer,
+    ytd-slimline-survey-renderer,
+    ytd-multi-stage-survey-renderer,
+    ytd-single-option-survey-renderer,
+    ytd-checkbox-survey-renderer {
+        display: none !important;
+    }
+}
+
+html[data-ybr-ads='off'] {
+    /* Sponsored cards in the Home grid, loose ad slots in search and the watch-next sidebar, and the masthead banner. */
+    ytd-rich-item-renderer:has(ytd-ad-slot-renderer),
+    ytd-ad-slot-renderer,
+    #masthead-ad {
+        display: none !important;
+    }
+}
+
+html[data-ybr-more-from-youtube='off'] {
+    /* "More from YouTube" sidebar section. Its title is localised, so it is matched by its links instead. */
+    ytd-guide-section-renderer:has(a[href='/premium'], a[href^='https://music.youtube.com'], a[href^='https://www.youtubekids.com']) {
+        display: none !important;
+    }
+}

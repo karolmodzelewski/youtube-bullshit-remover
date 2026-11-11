@@ -2,12 +2,18 @@ export type Settings = {
     hideShorts: boolean;
     hidePlayables: boolean;
     hideMostRelevant: boolean;
+    hideSurveys: boolean;
+    hideAds: boolean;
+    hideMoreFromYouTube: boolean;
 };
 
 export const DEFAULT_SETTINGS: Settings = {
     hideShorts: true,
     hidePlayables: true,
     hideMostRelevant: true,
+    hideSurveys: true,
+    hideAds: true,
+    hideMoreFromYouTube: true,
 };
 
 export const SETTING_LABELS: Record<keyof Settings, { title: string; hint: string }> = {
@@ -22,6 +28,18 @@ export const SETTING_LABELS: Record<keyof Settings, { title: string; hint: strin
     hideMostRelevant: {
         title: 'Hide “Most relevant”',
         hint: 'The ranked shelf at the top of Subscriptions',
+    },
+    hideSurveys: {
+        title: 'Hide surveys',
+        hint: '“How do you rate this recommendation?” and similar',
+    },
+    hideAds: {
+        title: 'Hide feed ads',
+        hint: 'Sponsored cards on Home and in search, masthead banner',
+    },
+    hideMoreFromYouTube: {
+        title: 'Hide “More from YouTube”',
+        hint: 'Premium, Music, Kids and Labs links in the sidebar',
     },
 };
 
